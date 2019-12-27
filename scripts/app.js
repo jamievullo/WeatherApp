@@ -64,4 +64,14 @@ cityForm.addEventListener('submit', e => {
     updateCity(city)
     .then(data => updateUI(data))
     .catch(err => console.log(err))
+
+    //set local storage
+    localStorage.setItem('city', city)
 })
+
+//if there is a city in local storage it will keep the data after refresh and show the last cities data
+if(localStorage.getItem('city')) {
+    updateCity(localStorage.getItem('city'))
+    .then(data => updateUI(data))
+    .catch(err => console.log(err))
+}
